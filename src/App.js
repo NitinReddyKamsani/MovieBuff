@@ -1,9 +1,9 @@
 import React from "react";
+import Body from "./components/Body";
 
 const App = () => {
   return (
-  <h1 className="font-bold m-10 p-10 text-2xl">Hello from App.jsx!</h1>
-
+    <Body />
   )
 };
 
