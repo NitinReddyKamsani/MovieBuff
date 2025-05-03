@@ -36,11 +36,14 @@ const Login = () =>{
             console.log(user);
              // Signed up 
              updateProfile(user, {
-                displayName: name.current.value 
+
+                displayName: name.current.value,  
+                
               }).then(() => {
                 // Profile updated!
                 // ...
-                const {uid,email,displayName} = auth.currentUser;
+             
+                const {uid,email,displayName} = user;
                 dispatch(addUser({uid : uid , email : email , displayName : displayName}))
                 navigate("/browse");
 
@@ -65,7 +68,6 @@ const Login = () =>{
             // Signed in 
             const user = userCredential.user;
             console.log(user);
-            navigate("/browse");
             // ...
         })
         .catch((error) => {
