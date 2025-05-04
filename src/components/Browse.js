@@ -1,23 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
-import { API_OPTIONS, url } from "../utils/constants";
+import useNowPlaying from "../../hooks/useNowPlaying";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
-const Browse = () =>{
+const Browse = () => {
 
-    async function getNowPlaying(){
-
-        const data = await fetch(url,API_OPTIONS);
-        const json = await data.json();
-        console.log(json);
-    }
-
-    useEffect(()=>{
-        getNowPlaying();
-    },[])
+    useNowPlaying();
 
     return (
         <div>
             <Header />
+            <MainContainer />
+            <SecondaryContainer />
         </div>
     )
 }
