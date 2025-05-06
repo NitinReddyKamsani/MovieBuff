@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Logo } from "../utils/constants";
 import { userLogo } from "../utils/constants";
+import { toggleShowGptSearch } from "../utils/gptSlice";
 
 
 
@@ -25,6 +26,10 @@ const Header = () => {
         navigate("/error");
     });
 
+    }
+
+    const handleGptSearch=()=>{
+      dispatch(toggleShowGptSearch());
     }
 
 
@@ -57,14 +62,17 @@ const Header = () => {
 
         {
         user && 
-         <div className="flex">
-            <h1 className="font-bold text-white text-xl m-1 py-2 px-1 animate-pulse duration-100">Welcome</h1>
+         <div className="flex justify-between">
+            <h1 className="font-bold text-white text-xl mt-3 py-2 px-1 animate-pulse duration-100 ">Welcome</h1>
             <h1 className="font-bold text-rose-800 text-xl m-1 py-2 px-0">{user.displayName}</h1>
-            <img className="w-[50px] h-[50px]" src={userLogo} />
+            <img className="w-[50px] h-[50px] m-2" src={userLogo} />
+            <button onClick={handleGptSearch} className="bg-purple-800 text-white px-4 py-2 m-4 rounded-lg" >Gpt search</button>
             <button onClick={handleSignOut} className= " text-white font-bold px-2">Sign out</button>
         </div>
-        }       
+        }      
         </div>
+
+
     );
 
 };
