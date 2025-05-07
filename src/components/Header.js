@@ -1,12 +1,15 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { Logo } from "../utils/constants";
+import { Logo, Supported_Languages } from "../utils/constants";
 import { userLogo } from "../utils/constants";
 import { toggleShowGptSearch } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
+
+
 
 
 
@@ -16,6 +19,11 @@ const Header = () => {
     const navigate = useNavigate();
 
     const user = useSelector((store) =>store.user)
+
+    const gptSearch = useSelector((store)=>store.gpt.showGptSearch);
+
+    const lang = useRef(null);
+
 
     function handleSignOut (){
 
@@ -30,6 +38,11 @@ const Header = () => {
 
     const handleGptSearch=()=>{
       dispatch(toggleShowGptSearch());
+    }
+
+    const handleLanguage=()=>{
+      const selected = lang.current.value;
+      dispatch(changeLanguage(selected));
     }
 
 
@@ -63,8 +76,16 @@ const Header = () => {
         {
         user && 
          <div className="flex justify-between">
-            <h1 className="font-bold text-white text-xl mt-3 py-2 px-1 animate-pulse duration-100 ">Welcome</h1>
-            <h1 className="font-bold text-rose-800 text-xl m-1 py-2 px-0">{user.displayName}</h1>
+        { 
+            gptSearch &&
+          
+            <select className="px-2 h-12 bg-gray-800 text-white m-2 w-24" onChange={handleLanguage} ref={lang}>
+             {
+              Supported_Languages?.map((lang)=> <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)
+             }
+            </select>
+          
+          }
             <img className="w-[50px] h-[50px] m-2" src={userLogo} />
             <button onClick={handleGptSearch} className="bg-purple-800 text-white px-4 py-2 m-4 rounded-lg" >Gpt search</button>
             <button onClick={handleSignOut} className= " text-white font-bold px-2">Sign out</button>

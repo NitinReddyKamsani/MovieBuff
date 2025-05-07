@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { Background } from "../utils/constants";
 
 const Login = () =>{
 
@@ -86,7 +87,7 @@ const Login = () =>{
         <div>
             <Header />
             <div className="absolute">
-                <img className="bg-opacity-30 m-0" src="https://assets.nflxext.com/ffe/siteui/vlv3/9390f6f6-cf80-4bc9-8981-8c2cc8adf98a/web/IN-en-20250421-TRIFECTA-perspective_dc5bcfdf-88a5-4972-8ffe-b28ff942f76e_large.jpg"
+                <img className="bg-opacity-30 m-0" src={Background}
                 alt ="background"/>
             </div>
             <form onSubmit={(e)=>{
