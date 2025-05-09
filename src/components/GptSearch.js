@@ -5,7 +5,7 @@ import { Background } from "../utils/constants";
 const GptSearch = ()=>{
     return(
         <div>
-            <div className="absolute -z-10 opacity-85">
+            <div className="fixed -z-10 opacity-85">
                 <img className="bg-opacity-30 m-0" src={Background}
                 alt ="background"/>
             </div>
