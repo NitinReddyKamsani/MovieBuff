@@ -87,12 +87,12 @@ const Login = () =>{
         <div>
             <Header />
             <div className="absolute">
-                <img className="bg-opacity-30 m-0" src={Background}
+                <img className="bg-opacity-30 m-0 h-screen object-cover" src={Background}
                 alt ="background"/>
             </div>
             <form onSubmit={(e)=>{
                 e.preventDefault()
-            }} className= "bg-black absolute w-3/12 my-56 mx-auto left-0 right-0 p-12 text-white bg-opacity-80">
+            }} className= "bg-black absolute w-full md:w-3/12 my-56 mx-auto left-0 right-0 p-12 text-white bg-opacity-80">
                 <h2 className="text-white p-2 font-bold text-3xl my-4">{isSignIn ? "Sign In" : "Sign Up"}</h2>
                 {
                     !isSignIn && <input ref={name} type="text" placeholder="Enter your Full Name" className="p-2 my-4 text-black w-full bg-gray-700"/>

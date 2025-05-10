@@ -7,3 +7,5 @@
 src/utils/geminiAi.js
 src/utils/constants.js
 .gitignore
+.env
+.gitignore
